@@ -43,10 +43,15 @@ s3.pub.m2hq.net)
     promptcolor2=magenta
     export PATH=$PATH:$HOME/.local/bin
     ;;
-Schnee)
+schnee)
     promptcolor=blue
     promptcolor2=cyan
     export PATH=$PATH:$HOME/.local/bin:$HOME/.local/opt/eclipse:$HOME/.local/opt/android-sdk-linux_x86/tools:/opt/vSphereCLI/bin
+    ;;
+geopelia)
+    promptcolor=magenta
+    promptcolor2=red
+    export PATH=$PATH:$HOME/.local/bin
     ;;
 *)
     promptcolor=white

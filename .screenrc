@@ -3,7 +3,7 @@ vbell off
 startup_message off
 
 hardstatus string "[%n:%t] %h"
-caption always "[%02c] %`%-w%{=b bw}%n %t%{-}%+w"
+caption always "%{=r kw}[%02c] %`%-w%{=b bw}%n %t%{-}%+w%{-}"
 
 # emacs like
 bind 2 split
