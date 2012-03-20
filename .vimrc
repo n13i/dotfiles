@@ -12,7 +12,7 @@ set nobackup
 set expandtab
 
 " *** this part is taken from http://www.kawaz.jp/pukiwiki/?vim#cb691f26
-" Ê¸»ú¥³¡¼¥É¤Î¼«Æ°Ç§¼±
+" æ–‡å­—ã‚³ãƒ¼ãƒ‰ã®è‡ªå‹•èªè­˜
 if &encoding !=# 'utf-8'
   set encoding=japan
   set fileencoding=japan
@@ -20,16 +20,16 @@ endif
 if has('iconv')
   let s:enc_euc = 'euc-jp'
   let s:enc_jis = 'iso-2022-jp'
-  " iconv¤¬eucJP-ms¤ËÂĞ±ş¤·¤Æ¤¤¤ë¤«¤ò¥Á¥§¥Ã¥¯
+  " iconvãŒeucJP-msã«å¯¾å¿œã—ã¦ã„ã‚‹ã‹ã‚’ãƒã‚§ãƒƒã‚¯
   if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
     let s:enc_euc = 'eucjp-ms'
     let s:enc_jis = 'iso-2022-jp-3'
-  " iconv¤¬JISX0213¤ËÂĞ±ş¤·¤Æ¤¤¤ë¤«¤ò¥Á¥§¥Ã¥¯
+  " iconvãŒJISX0213ã«å¯¾å¿œã—ã¦ã„ã‚‹ã‹ã‚’ãƒã‚§ãƒƒã‚¯
   elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
     let s:enc_euc = 'euc-jisx0213'
     let s:enc_jis = 'iso-2022-jp-3'
   endif
-  " fileencodings¤ò¹½ÃÛ
+  " fileencodingsã‚’æ§‹ç¯‰
   if &encoding ==# 'utf-8'
     let s:fileencodings_default = &fileencodings
     let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
@@ -49,11 +49,11 @@ if has('iconv')
       let &fileencodings = &fileencodings .','. s:enc_euc
     endif
   endif
-  " Äê¿ô¤ò½èÊ¬
+  " å®šæ•°ã‚’å‡¦åˆ†
   unlet s:enc_euc
   unlet s:enc_jis
 endif
-" ÆüËÜ¸ì¤ò´Ş¤Ş¤Ê¤¤¾ì¹ç¤Ï fileencoding ¤Ë encoding ¤ò»È¤¦¤è¤¦¤Ë¤¹¤ë
+" æ—¥æœ¬èªã‚’å«ã¾ãªã„å ´åˆã¯ fileencoding ã« encoding ã‚’ä½¿ã†ã‚ˆã†ã«ã™ã‚‹
 if has('autocmd')
   function! AU_ReCheck_FENC()
     if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
@@ -61,11 +61,22 @@ if has('autocmd')
     endif
   endfunction
   autocmd BufReadPost * call AU_ReCheck_FENC()
+
+  " from Gentoo's /etc/vim/vimrc
+  " When editing a file, always jump to the last cursor position
+  autocmd BufReadPost *
+        \ if ! exists("g:leave_my_cursor_position_alone") |
+        \     if line("'\"") > 0 && line ("'\"") <= line("$") |
+        \         exe "normal g'\"" |
+        \     endif |
+        \ endif
+
 endif
-" ²ş¹Ô¥³¡¼¥É¤Î¼«Æ°Ç§¼±
+" æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã®è‡ªå‹•èªè­˜
 set fileformats=unix,dos,mac
-" ¢¢¤È¤«¡û¤ÎÊ¸»ú¤¬¤¢¤Ã¤Æ¤â¥«¡¼¥½¥ë°ÌÃÖ¤¬¤º¤ì¤Ê¤¤¤è¤¦¤Ë¤¹¤ë
+" â–¡ã¨ã‹â—‹ã®æ–‡å­—ãŒã‚ã£ã¦ã‚‚ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ãŒãšã‚Œãªã„ã‚ˆã†ã«ã™ã‚‹
 if exists('&ambiwidth')
   set ambiwidth=double
 endif
 
+set fileencodings=ucs-bom,utf-8,iso-2022-jp,euc-jp,cp932,utf-16,utf-16le
