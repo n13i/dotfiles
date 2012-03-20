@@ -1,0 +1,21 @@
+escape ^z^z
+vbell off
+startup_message off
+
+hardstatus string "[%n:%t] %h"
+caption always "[%02c] %`%-w%{=b bw}%n %t%{-}%+w"
+
+# emacs like
+bind 2 split
+bind o focus
+bind 1 only
+bind 0 remove
+
+# switch encoding
+bind u encoding utf-8
+bind e encoding euc-jp
+
+termcapinfo * 'hs:ts=\E]2;:fs=\007:ds=\E]0;screen\007'
+shelltitle "$ |*"
+
+defscrollback 10000
