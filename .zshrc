@@ -53,6 +53,9 @@ geopelia)
     promptcolor2=red
     export PATH=$PATH:$HOME/.local/bin
     ;;
+ghosteye)
+    unalias less
+    ;;
 *)
     promptcolor=white
     promptcolor2=white
