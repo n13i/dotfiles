@@ -57,6 +57,8 @@ orcinus)
     promptcolor=blue
     promptcolor2=cyan
     export PATH=$PATH:$HOME/.local/bin
+ghosteye)
+    unalias less
     ;;
 *)
     promptcolor=white
