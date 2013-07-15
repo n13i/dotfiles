@@ -53,6 +53,11 @@ geopelia)
     promptcolor2=red
     export PATH=$PATH:$HOME/.local/bin
     ;;
+orcinus)
+    promptcolor=blue
+    promptcolor2=cyan
+    export PATH=$PATH:$HOME/.local/bin
+    ;;
 *)
     promptcolor=white
     promptcolor2=white
