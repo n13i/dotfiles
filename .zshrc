@@ -27,26 +27,11 @@ esac
 
 # per host settings
 case `hostname` in
-s1.pub.m2hq.net)
-    promptcolor=cyan
-    promptcolor2=blue
-    export PATH=$PATH:$HOME/.local/bin
-    ;;
-scarface) # a.k.a. s2.pub.m2hq.net
+scarface)
     promptcolor=green
     promptcolor2=blue
     export PATH=$PATH:$HOME/.local/bin
     export SVKLOGLEVEL=
-    ;;
-s3.pub.m2hq.net)
-    promptcolor=yellow
-    promptcolor2=magenta
-    export PATH=$PATH:$HOME/.local/bin
-    ;;
-schnee)
-    promptcolor=blue
-    promptcolor2=cyan
-    export PATH=$PATH:$HOME/.local/bin:$HOME/.local/opt/eclipse:$HOME/.local/opt/android-sdk-linux_x86/tools:/opt/vSphereCLI/bin
     ;;
 geopelia)
     promptcolor=magenta
@@ -61,7 +46,20 @@ orcinus)
 ghosteye)
     unalias less
     ;;
+ouroboros)
+    unalias less
+    export PATH=$PATH:$HOME/.local/bin
+    promptcolor=yellow
+    promptcolor2=green
+    ;;
+pixy)
+    unalias less
+    export PATH=$PATH:$HOME/.local/bin
+    promptcolor=cyan
+    promptcolor2=blue
+    ;;
 *)
+    unalias less
     promptcolor=white
     promptcolor2=white
     ;;
