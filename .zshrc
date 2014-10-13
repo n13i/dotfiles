@@ -87,10 +87,10 @@ zle -N history-beginning-search-forward-end history-search-end
 
 bindkey -e
 bindkey "^W"    backward-delete-word
-#bindkey "[A"  history-search-backward
-#bindkey "[B"  history-search-forward
-bindkey "[A"  history-beginning-search-backward-end
-bindkey "[B"  history-beginning-search-forward-end
+bindkey "\e[A"  history-beginning-search-backward-end
+bindkey "\e[B"  history-beginning-search-forward-end
+bindkey "\eOA"  history-beginning-search-backward-end
+bindkey "\eOB"  history-beginning-search-forward-end
 
 setopt correct
 setopt list_packed
