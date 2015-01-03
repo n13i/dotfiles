@@ -45,6 +45,7 @@ orcinus)
     ;;
 ghosteye)
     unalias less
+    alias vi=vim
     ;;
 ouroboros)
     unalias less
