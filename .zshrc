@@ -27,34 +27,41 @@ esac
 
 # per host settings
 case `hostname` in
-s1.pub.m2hq.net)
-    promptcolor=cyan
-    promptcolor2=blue
-    export PATH=$PATH:$HOME/.local/bin
-    ;;
-scarface) # a.k.a. s2.pub.m2hq.net
+scarface)
     promptcolor=green
     promptcolor2=blue
     export PATH=$PATH:$HOME/.local/bin:$HOME/.local/opt/julius/bin:$HOME/.gem/ruby/1.9.1/bin
     export SVKLOGLEVEL=
     export GOPATH=$HOME/.go
     ;;
-s3.pub.m2hq.net)
-    promptcolor=yellow
-    promptcolor2=magenta
-    export PATH=$PATH:$HOME/.local/bin
-    ;;
-schnee)
-    promptcolor=blue
-    promptcolor2=cyan
-    export PATH=$PATH:$HOME/.local/bin:$HOME/.local/opt/eclipse:$HOME/.local/opt/android-sdk-linux_x86/tools:/opt/vSphereCLI/bin
-    ;;
 geopelia)
     promptcolor=magenta
     promptcolor2=red
     export PATH=$PATH:$HOME/.local/bin
     ;;
+orcinus)
+    promptcolor=blue
+    promptcolor2=cyan
+    export PATH=$PATH:$HOME/.local/bin
+    ;;
+ghosteye)
+    unalias less
+    alias vi=vim
+    ;;
+ouroboros)
+    unalias less
+    export PATH=$PATH:$HOME/.local/bin
+    promptcolor=yellow
+    promptcolor2=green
+    ;;
+pixy)
+    unalias less
+    export PATH=$PATH:$HOME/.local/bin
+    promptcolor=cyan
+    promptcolor2=blue
+    ;;
 *)
+    unalias less
     promptcolor=white
     promptcolor2=white
     ;;
@@ -82,10 +89,10 @@ zle -N history-beginning-search-forward-end history-search-end
 
 bindkey -e
 bindkey "^W"    backward-delete-word
-#bindkey "[A"  history-search-backward
-#bindkey "[B"  history-search-forward
-bindkey "[A"  history-beginning-search-backward-end
-bindkey "[B"  history-beginning-search-forward-end
+bindkey "\e[A"  history-beginning-search-backward-end
+bindkey "\e[B"  history-beginning-search-forward-end
+bindkey "\eOA"  history-beginning-search-backward-end
+bindkey "\eOB"  history-beginning-search-forward-end
 
 setopt correct
 setopt list_packed
