@@ -30,9 +30,9 @@ case `hostname` in
 scarface)
     promptcolor=green
     promptcolor2=blue
-    export PATH=$PATH:$HOME/.local/bin:$HOME/.local/opt/julius/bin:$HOME/.gem/ruby/1.9.1/bin
-    export SVKLOGLEVEL=
     export GOPATH=$HOME/.go
+    export PATH=$PATH:$HOME/.local/bin:$HOME/.local/opt/julius/bin:$HOME/.gem/ruby/1.9.1/bin:$GOPATH/bin
+    export SVKLOGLEVEL=
     ;;
 geopelia)
     promptcolor=magenta
