@@ -35,8 +35,9 @@ s1.pub.m2hq.net)
 scarface) # a.k.a. s2.pub.m2hq.net
     promptcolor=green
     promptcolor2=blue
-    export PATH=$PATH:$HOME/.local/bin
+    export PATH=$PATH:$HOME/.local/bin:$HOME/.local/opt/julius/bin:$HOME/.gem/ruby/1.9.1/bin
     export SVKLOGLEVEL=
+    export GOPATH=$HOME/.go
     ;;
 s3.pub.m2hq.net)
     promptcolor=yellow
@@ -116,3 +117,5 @@ function print_known_hosts (){
 }
 _cache_hosts=($( print_known_hosts ))
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
