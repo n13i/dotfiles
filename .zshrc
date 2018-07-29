@@ -16,6 +16,13 @@ freebsd*)
     export PAGER=less
     hostname=`hostname`
     ;;
+linux-android)
+    alias ls="ls --color"
+    export EDITOR=/usr/bin/vim
+    #export PAGER=/usr/bin/lv
+    export PAGER=less
+    hostname=`hostname -f`
+    ;;
 linux*)
     alias ls="ls --color"
     export EDITOR=/usr/bin/vim
