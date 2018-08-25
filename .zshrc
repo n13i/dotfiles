@@ -18,7 +18,8 @@ freebsd*)
     ;;
 linux-android)
     alias ls="ls --color"
-    export EDITOR=/usr/bin/vim
+    alias vi=nvim
+    export EDITOR=/usr/bin/nvim
     #export PAGER=/usr/bin/lv
     export PAGER=less
     hostname=`hostname -f`
@@ -69,6 +70,7 @@ pixy)
     ;;
 *)
     unalias less
+    export PATH=$PATH:$HOME/.local/bin
     promptcolor=white
     promptcolor2=white
     ;;
