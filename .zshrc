@@ -68,6 +68,11 @@ pixy)
     promptcolor=cyan
     promptcolor2=blue
     ;;
+beast.local.m2hq.net)
+    unalias less
+    alias vi=nvim
+    export EDITOR=/usr/local/bin/nvim
+    ;;
 *)
     unalias less
     export PATH=$PATH:$HOME/.local/bin
