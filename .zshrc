@@ -126,3 +126,6 @@ _cache_hosts=($( print_known_hosts ))
 
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+source $HOME/.nvm/nvm.sh
+
