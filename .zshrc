@@ -16,6 +16,14 @@ freebsd*)
     export PAGER=less
     hostname=`hostname`
     ;;
+linux-android)
+    alias ls="ls --color"
+    alias vi=nvim
+    export EDITOR=/usr/bin/nvim
+    #export PAGER=/usr/bin/lv
+    export PAGER=less
+    hostname=`hostname -f`
+    ;;
 linux*)
     alias ls="ls --color"
     export EDITOR=/usr/bin/vim
@@ -60,8 +68,14 @@ pixy)
     promptcolor=cyan
     promptcolor2=blue
     ;;
+beast.local.m2hq.net)
+    unalias less
+    alias vi=nvim
+    export EDITOR=/usr/local/bin/nvim
+    ;;
 *)
     unalias less
+    export PATH=$PATH:$HOME/.local/bin
     promptcolor=white
     promptcolor2=white
     ;;
