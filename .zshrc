@@ -1,5 +1,7 @@
 # m2hq.net Common ~/.zshrc
 
+#zmodload zsh/zprof && zprof
+
 export LANG=ja_JP.UTF-8
 
 alias less=lv
@@ -34,7 +36,7 @@ linux*)
 esac
 
 # per host settings
-case `hostname` in
+case ${hostname} in
 scarface)
     promptcolor=green
     promptcolor2=blue
@@ -141,5 +143,13 @@ _cache_hosts=($( print_known_hosts ))
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-source $HOME/.nvm/nvm.sh
+# https://qiita.com/uasi/items/80865646607b966aedc8
+function nvm(){
+    unset -f nvm
+    source $HOME/.nvm/nvm.sh
+    nvm "$@"
+}
 
+#if (which zprof > /dev/null 2>&1); then
+#    zprof
+#fi
