@@ -36,7 +36,7 @@ linux*)
 esac
 
 # per host settings
-case ${hostname} in
+case `hostname` in
 scarface)
     promptcolor=green
     promptcolor2=blue
