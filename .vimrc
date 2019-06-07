@@ -1,4 +1,7 @@
 "colorscheme inkpot
+colorscheme molokai
+"let g:rehash256 = 1
+"colorscheme material-theme
 
 syntax on
 set modeline
@@ -10,6 +13,8 @@ set tabstop=4
 set shiftwidth=4
 set nobackup
 set expandtab
+set number
+set cursorline
 
 " *** this part is taken from http://www.kawaz.jp/pukiwiki/?vim#cb691f26
 " 文字コードの自動認識
