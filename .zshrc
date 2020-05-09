@@ -104,11 +104,11 @@ case ${UID} in
 0)
     LANG=C
     RPROMPT="%T"
-    PROMPT=$'\n'"${bg[red]}${fg[white]} %n${fg[yellow]}@${fg[white]}${hostname} ${bg[white]}${fg[red]}${sep1} ${fg[black]}%~ ${bg[default]}${fg[white]}${sep1}"$'\n'"${fg[default]}%B%%b "
+    PROMPT=$'\n'"${bg[red]}${fg[black]}${sep1}${bg[red]}${fg[white]} %n${fg[yellow]}@${fg[white]}${hostname} ${bg[white]}${fg[red]}${sep1} ${fg[black]}%~ ${bg[default]}${fg[white]}${sep1}"$'\n'"${fg[default]}%B%%b "
     ;;
 *)
     RPROMPT="%T"
-    PROMPT=$'\n'"${bg[blue]}${fg[white]} %n${fg[cyan]}@${fg[white]}${hostname} ${bg[white]}${fg[blue]}${sep1} ${fg[black]}%~ ${bg[default]}${fg[white]}${sep1}"$'\n'"${fg[default]}%B%#%b "
+    PROMPT=$'\n'"${bg[blue]}${fg[black]}${sep1}${bg[blue]}${fg[white]} %n${fg[cyan]}@${fg[white]}${hostname} ${bg[white]}${fg[blue]}${sep1} ${fg[black]}%~ ${bg[default]}${fg[white]}${sep1}"$'\n'"${fg[default]}%B%#%b "
     ;;
 esac
 
