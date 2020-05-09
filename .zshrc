@@ -9,29 +9,42 @@ alias less=lv
 autoload colors
 colors
 
+editor_cmds=(nvim vim vi nano)
+editor_paths=(/usr/bin /usr/local/bin)
+for cmd in $editor_cmds; do
+    for p in $editor_paths; do
+        if [ -e $p/$cmd ]; then
+            export EDITOR=$p/$cmd
+            alias vi=$cmd
+            break 2
+        fi
+    done
+done
+
+export PAGER=less
+
 case "${OSTYPE}" in
 freebsd*)
     alias ls="ls -G -w"
-    alias vi=vim
-    export EDITOR=/usr/local/bin/vim
+    #alias vi=vim
+    #export EDITOR=/usr/local/bin/vim
     #export PAGER=/usr/local/bin/lv
-    export PAGER=less
-    hostname=`hostname`
+    hostname=`hostname -s`
     ;;
 linux-android)
     alias ls="ls --color"
-    alias vi=nvim
-    export EDITOR=/usr/bin/nvim
+    #alias vi=nvim
+    #export EDITOR=/usr/bin/nvim
     #export PAGER=/usr/bin/lv
     export PAGER=less
-    hostname=`hostname -f`
+    hostname=`hostname -s`
     ;;
 linux*)
     alias ls="ls --color"
-    export EDITOR=/usr/bin/vim
+    #export EDITOR=/usr/bin/vim
     #export PAGER=/usr/bin/lv
     export PAGER=less
-    hostname=`hostname --fqdn`
+    hostname=`hostname -s`
     ;;
 esac
 
@@ -73,7 +86,7 @@ pixy)
 beast.local.m2hq.net)
     unalias less
     alias vi=nvim
-    export EDITOR=/usr/local/bin/nvim
+    #export EDITOR=/usr/local/bin/nvim
     ;;
 *)
     unalias less
@@ -83,15 +96,19 @@ beast.local.m2hq.net)
     ;;
 esac
 
+
+sep1=""
+sep2=""
+
 case ${UID} in
 0)
     LANG=C
-    PROMPT="%B${fg[red]}[%n@${hostname}${fg[default]}:%~]${fg[default]}
-%T %B%#%b "
+    RPROMPT="%T"
+    PROMPT=$'\n'"${bg[red]}${fg[white]} %n${fg[yellow]}@${fg[white]}${hostname} ${bg[white]}${fg[red]}${sep1} ${fg[black]}%~ ${bg[default]}${fg[white]}${sep1}"$'\n'"${fg[default]}%B%%b "
     ;;
 *)
-    PROMPT="%B${fg[${promptcolor2}]}[${fg[${promptcolor}]}%n@${hostname}${fg[default]}:%~${fg[${promptcolor2}]}]${fg[default]}%b
-%T %B%#%b "
+    RPROMPT="%T"
+    PROMPT=$'\n'"${bg[blue]}${fg[white]} %n${fg[cyan]}@${fg[white]}${hostname} ${bg[white]}${fg[blue]}${sep1} ${fg[black]}%~ ${bg[default]}${fg[white]}${sep1}"$'\n'"${fg[default]}%B%#%b "
     ;;
 esac
 
