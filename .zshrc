@@ -3,6 +3,7 @@
 #zmodload zsh/zprof && zprof
 
 export LANG=ja_JP.UTF-8
+export GOPATH=$HOME/.go
 
 alias less=lv
 
