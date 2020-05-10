@@ -40,18 +40,33 @@ esac
 # per host settings
 case `hostname -s` in
 scarface)
-    promptcolor=green
     export PATH=$PATH:$HOME/.local/opt/julius/bin:$HOME/.gem/ruby/1.9.1/bin
     export SVKLOGLEVEL=
     ;;
-ouroboros)
-    promptcolor=yellow
-    ;;
-*)
-    promptcolor=cyan
-    ;;
 esac
 
+case `uname -rv` in
+*gentoo*)
+    prompt_bg=green
+    prompt_fg=black
+    ;;
+*Ubuntu*)
+    prompt_bg=yellow
+    prompt_fg=black
+    ;;
+*Debian*)
+    prompt_bg=magenta
+    prompt_fg=white
+    ;;
+*FreeBSD*)
+    prompt_bg=cyan
+    prompt_fg=black
+    ;;
+*)
+    prompt_bg=blue
+    prompt_fg=white
+    ;;
+esac
 
 sep1=""
 sep2=""
@@ -64,7 +79,7 @@ case ${UID} in
     ;;
 *)
     RPROMPT="%T"
-    PROMPT=$'\n'"${bg[$promptcolor]}${fg[black]}${sep1}${bg[$promptcolor]}${fg[black]} %n@${hostname} ${bg[white]}${fg[$promptcolor]}${sep1} ${fg[black]}%~ ${bg[default]}${fg[white]}${sep1}"$'\n'"${fg[default]}%B%#%b "
+    PROMPT=$'\n'"${bg[$prompt_bg]}${fg[black]}${sep1}${bg[$prompt_bg]}${fg[$prompt_fg]} %n@${hostname} ${bg[white]}${fg[$prompt_bg]}${sep1} ${fg[black]}%~ ${bg[default]}${fg[white]}${sep1}"$'\n'"${fg[default]}%B%#%b "
     ;;
 esac
 
