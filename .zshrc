@@ -4,8 +4,8 @@
 
 export LANG=ja_JP.UTF-8
 export GOPATH=$HOME/.go
-
-alias less=lv
+export PATH=$PATH:$HOME/.local/bin:$HOME/.rvm/bin:$GOPATH/bin
+export PAGER=less
 
 autoload colors
 colors
@@ -22,78 +22,33 @@ for cmd in $editor_cmds; do
     done
 done
 
-export PAGER=less
-
 case "${OSTYPE}" in
 freebsd*)
     alias ls="ls -G -w"
-    #alias vi=vim
-    #export EDITOR=/usr/local/bin/vim
-    #export PAGER=/usr/local/bin/lv
     hostname=`hostname -s`
     ;;
 linux-android)
     alias ls="ls --color"
-    #alias vi=nvim
-    #export EDITOR=/usr/bin/nvim
-    #export PAGER=/usr/bin/lv
-    export PAGER=less
     hostname=`hostname -s`
     ;;
 linux*)
     alias ls="ls --color"
-    #export EDITOR=/usr/bin/vim
-    #export PAGER=/usr/bin/lv
-    export PAGER=less
     hostname=`hostname -s`
     ;;
 esac
 
 # per host settings
-case `hostname` in
+case `hostname -s` in
 scarface)
     promptcolor=green
-    promptcolor2=blue
-    export GOPATH=$HOME/.go
-    export PATH=$PATH:$HOME/.local/bin:$HOME/.local/opt/julius/bin:$HOME/.gem/ruby/1.9.1/bin:$GOPATH/bin
+    export PATH=$PATH:$HOME/.local/opt/julius/bin:$HOME/.gem/ruby/1.9.1/bin
     export SVKLOGLEVEL=
     ;;
-geopelia)
-    promptcolor=magenta
-    promptcolor2=red
-    export PATH=$PATH:$HOME/.local/bin
-    ;;
-orcinus)
-    promptcolor=blue
-    promptcolor2=cyan
-    export PATH=$PATH:$HOME/.local/bin
-    ;;
-ghosteye)
-    unalias less
-    alias vi=vim
-    ;;
 ouroboros)
-    unalias less
-    export PATH=$PATH:$HOME/.local/bin
     promptcolor=yellow
-    promptcolor2=green
-    ;;
-pixy)
-    unalias less
-    export PATH=$PATH:$HOME/.local/bin
-    promptcolor=cyan
-    promptcolor2=blue
-    ;;
-beast.local.m2hq.net)
-    unalias less
-    alias vi=nvim
-    #export EDITOR=/usr/local/bin/nvim
     ;;
 *)
-    unalias less
-    export PATH=$PATH:$HOME/.local/bin
-    promptcolor=white
-    promptcolor2=white
+    promptcolor=cyan
     ;;
 esac
 
@@ -109,7 +64,7 @@ case ${UID} in
     ;;
 *)
     RPROMPT="%T"
-    PROMPT=$'\n'"${bg[blue]}${fg[black]}${sep1}${bg[blue]}${fg[white]} %n${fg[cyan]}@${fg[white]}${hostname} ${bg[white]}${fg[blue]}${sep1} ${fg[black]}%~ ${bg[default]}${fg[white]}${sep1}"$'\n'"${fg[default]}%B%#%b "
+    PROMPT=$'\n'"${bg[$promptcolor]}${fg[black]}${sep1}${bg[$promptcolor]}${fg[black]} %n@${hostname} ${bg[white]}${fg[$promptcolor]}${sep1} ${fg[black]}%~ ${bg[default]}${fg[white]}${sep1}"$'\n'"${fg[default]}%B%#%b "
     ;;
 esac
 
@@ -157,9 +112,6 @@ function print_known_hosts (){
   fi  
 }
 _cache_hosts=($( print_known_hosts ))
-
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # https://qiita.com/uasi/items/80865646607b966aedc8
 function nvm(){
