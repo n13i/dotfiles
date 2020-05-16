@@ -75,11 +75,11 @@ case ${UID} in
 0)
     LANG=C
     RPROMPT=""
-    PROMPT=$'\n'"${bg[red]}${fg[black]}${sep1}${bg[red]}${fg[white]} %n${fg[yellow]}@${fg[white]}${hostname} ${bg[white]}${fg[red]}${sep1} ${fg[black]}%~ ${bg[default]}${fg[white]}${sep1}"$'\n'"${fg[default]}%T %B%#%b "
+    PROMPT=$'\n'"${bg[red]}${fg[black]}${sep1}${bg[red]}${fg[white]} %n${fg[yellow]}@${fg[white]}${hostname} ${bg[white]}${fg[red]}${sep1} ${fg[black]}%~ ${bg[default]}${fg[white]}${sep1}${fg[default]}"$'\n'"%T %B%#%b "
     ;;
 *)
     RPROMPT=""
-    PROMPT=$'\n'"${bg[$prompt_bg]}${fg[black]}${sep1}${bg[$prompt_bg]}${fg[$prompt_fg]} %n@${hostname} ${bg[white]}${fg[$prompt_bg]}${sep1} ${fg[black]}%~ ${bg[default]}${fg[white]}${sep1}"$'\n'"${fg[default]}%T %B%#%b "
+    PROMPT=$'\n'"${bg[$prompt_bg]}${fg[black]}${sep1}${bg[$prompt_bg]}${fg[$prompt_fg]} %n@${hostname} ${bg[white]}${fg[$prompt_bg]}${sep1} ${fg[black]}%~ ${bg[default]}${fg[white]}${sep1}${fg[default]}"$'\n'"%T %B%#%b "
     ;;
 esac
 
