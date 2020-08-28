@@ -115,9 +115,11 @@ SAVEHIST=100000
 
 autoload zed
 
-# show pwd on titlebar
+# set hostname to window-name of screen
 function precmd(){
-    echo -n "\e]2;${USER}@${hostname}:$(pwd)\a"
+    if [[ $TERM == screen* ]]; then
+        printf '\ek%s\e\\' ${hostname}
+    fi
 }
 
 # ssh hostname completion

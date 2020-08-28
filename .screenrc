@@ -2,8 +2,9 @@ escape ^z^z
 vbell off
 startup_message off
 
-hardstatus string "[%n:%t] %h"
-caption always "%{=r kw}[%02c] %`%-w%{=b bw}%n %t%{-}%+w%{-}"
+#hardstatus string "[%n:%t] %h"
+#caption always "%{=r kw}[%02c] %`%-w%{=b bw}%n %t%{-}%+w%{-}"
+hardstatus alwayslastline " %02c %{= bd} %-w%{= dd} %n %t* %{-}%+w"
 
 # emacs like
 bind 2 split
