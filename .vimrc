@@ -16,6 +16,8 @@ set expandtab
 set number
 set cursorline
 
+set mouse-=a
+
 " *** this part is taken from http://www.kawaz.jp/pukiwiki/?vim#cb691f26
 " 文字コードの自動認識
 if &encoding !=# 'utf-8'
@@ -85,3 +87,16 @@ if exists('&ambiwidth')
 endif
 
 set fileencodings=ucs-bom,utf-8,iso-2022-jp,euc-jp,cp932,utf-16,utf-16le
+
+" this part is taken from https://baqamore.hatenablog.com/entry/2014/08/23/071938 and modified
+augroup noo
+  autocmd!
+  autocmd FileType * setlocal tw=0
+  " 自動改行を抑制
+  autocmd FileType * setlocal fo-=t
+  autocmd FileType * setlocal fo-=c
+  " コメントスタイルの自動挿入を抑制
+  autocmd FileType * setlocal fo-=r
+  autocmd FileType * setlocal fo-=o
+augroup END
+
