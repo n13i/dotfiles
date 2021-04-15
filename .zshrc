@@ -68,6 +68,9 @@ case `uname -rv` in
     ;;
 esac
 
+sep1=""
+sep2=""
+
 git_ps1=""
 if [ -f ~/.git-prompt.sh ]; then
     source ~/.git-prompt.sh
@@ -76,21 +79,18 @@ if [ -f ~/.git-prompt.sh ]; then
 	GIT_PS1_SHOWSTASHSTATE=true
 	GIT_PS1_SHOWUPSTREAM=auto
     setopt prompt_subst
-    git_ps1='$(__git_ps1 " ${fg_bold[blue]}(%s)${reset_color}")'
+    git_ps1='$(__git_ps1 "%s ")'
 fi
-
-sep1=""
-sep2=""
 
 case ${UID} in
 0)
     LANG=C
     RPROMPT=""
-    PROMPT=$'\n'"${bg[red]}${fg[black]}${sep1}${bg[red]}${fg[white]} %n${fg[yellow]}@${fg[white]}${hostname} ${bg[white]}${fg[red]}${sep1} ${fg[black]}%~ ${bg[default]}${fg[white]}${sep1}${fg[default]}"$'\n'"%T${git_ps1} %B%#%b "
+    PROMPT=$'\n'"${bg[red]}${fg[black]}${sep1}${bg[red]}${fg[white]} %n${fg[yellow]}@${fg[white]}${hostname} ${bg[white]}${fg[red]}${sep1} ${fg[black]}${git_ps1}${bg[default]}${fg[white]}${sep1}${fg[default]} ${fg_bold[blue]}%~${reset_color}"$'\n'"%T %B%#%b "
     ;;
 *)
     RPROMPT=""
-    PROMPT=$'\n'"${bg[$prompt_bg]}${fg[black]}${sep1}${bg[$prompt_bg]}${fg[$prompt_fg]} %n@${hostname} ${bg[white]}${fg[$prompt_bg]}${sep1} ${fg[black]}%~ ${bg[default]}${fg[white]}${sep1}${fg[default]}"$'\n'"%T${git_ps1} %B%#%b "
+    PROMPT=$'\n'"${bg[$prompt_bg]}${fg[black]}${sep1}${bg[$prompt_bg]}${fg[$prompt_fg]} %n@${hostname} ${bg[white]}${fg[$prompt_bg]}${sep1} ${fg[black]}${git_ps1}${bg[default]}${fg[white]}${sep1}${fg[default]} ${fg_bold[blue]}%~${reset_color}"$'\n'"%T %B%#%b "
     ;;
 esac
 
